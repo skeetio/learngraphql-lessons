@@ -1,5 +1,5 @@
 ```
-name: Introduction
+name: Introduction to GraphQL
 bulletPackage: free
 ```
 
