@@ -373,6 +373,6 @@ Now you've a pretty good idea about GraphQL and you've learned some useful core 
 What do you think about GraphQL?
 
   - Really, this is GraphQL?
-  - Noway, REST is much simpler
+  - Hmm, REST is much simpler
   - I was expecting something like SQL. This is worst.
   - **Freaking Cool**
