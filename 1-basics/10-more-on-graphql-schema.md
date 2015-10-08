@@ -31,3 +31,9 @@ You can learn more by looking at samples schemas. So, have a look at these schem
 * Slack: <https://graphql-slack.herokuapp.com/>
 * graphql-js issue tracker: <https://github.com/graphql/graphql-js/issues>
 * graphql-spec issue tracker: <https://github.com/facebook/graphql/issues>
+
+### Awesome GraphQL
+
+Repo: <https://github.com/chentsulin/awesome-graphql>
+
+Above repo concatnates most of resources, libararies, different graphql impletements and many other graphql goodies into single place.
