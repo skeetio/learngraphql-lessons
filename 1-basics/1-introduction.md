@@ -13,7 +13,7 @@ GraphQL also allows client applications to batch and fetch data very efficiently
 
 ~~~
 {
-  latestPost: getLatestPost {
+  latestPost {
     _id,
     title,
     content,

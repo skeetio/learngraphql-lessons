@@ -3,11 +3,11 @@ name:  Querying GraphQL
 bulletPackage: free
 ```
 
-GraphQL is an application layer query language. So, querying is one of the major parts of it. In this lesson, we are going to start with how to query against a graphql server and get familiar with the graphql query syntax.
+Querying is one of the major parts of GraphQL. In this lesson, we are going to start with how to query against a graphql server and get familiar with the query syntax.
 
 We'll be querying a data set for a typical **blog app** (as we decusssed earlier). For now, don't worry about how the GraphQL server works and how the schema is implemented. For now, we just focus on the query syntax and play with it.
 
-At the end of the lesson, you'll have a good understanding on how to write GraphQL queries.
+At the end of this lesson, you'll have a good understanding on how to write GraphQL queries.
 
 Let's get started!
 
@@ -21,9 +21,7 @@ points: 5
 
 ## Hello GraphQL
 
-Let's write our first GraphQL query. It'll get the latest post's title and summary. To invoke that, open our GraphQL Sandbox.
-
-> Go through our Setting Up lesson to get familiar with the GraphQL Sandbox. With that, you'll be able to learn about our schema and get familiarized with the Sandbox UI.
+Let's write our first GraphQL query. It'll get the title and summary of the latest post in our blog. To invoke that, open our GraphQL Sandbox.
 
 Then run this query:
 
@@ -36,7 +34,7 @@ Then run this query:
 }
 ~~~
 
-As the result, you'll something like this:
+You'll something like this as the result:
 
 ~~~
 {
@@ -48,8 +46,6 @@ As the result, you'll something like this:
   }
 }
 ~~~
-
-Hurray! We just invoked our first GraphQL query.
 
 With this query, we asked our GraphQL server with the query `getLatestPost`. Also, we only asked for the `title` and `summary` fields only. 
 
