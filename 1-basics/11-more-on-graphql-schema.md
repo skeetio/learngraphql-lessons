@@ -1,5 +1,5 @@
 ```
-name:  More on GraphQL Schema
+name:  More on GraphQL
 bulletPackage: free
 ```
 
