@@ -3,11 +3,11 @@ name:  Invoking Mutations
 bulletPackage: free
 ```
 
-Mutations are the way to change the dataset behind GraphQL. A mutation is very similar to a query in GraphQL, but GraphQL assumes the mutation is going to change the dataset behind it.
+Mutations are the way to change the dataset behind GraphQL. A mutation is very similar to a field in a GraphQL query, but GraphQL assumes a mutation has side effects and change the dataset behind the schema.
 
-We learned that, GraphQL execute queries in parellel to acheive fast response time. But, if there are more than one mutation in a single request, it'll invoke mutations by one by one. We'll learn about the reason behind that as well in this lesson.
+We learned that, GraphQL process multiple fields in a query parellelly to acheive low response time. But, multiple mutations in a single request executed one by one. We'll learn about the reason behind that as well.
 
-So, let's mutate our blog dataset.
+So, let's start mutating our blog dataset.
 
 *****
 
@@ -49,7 +49,7 @@ Once you invoked it you'll get a result like this:
 
 So, this is what has happened. We invoked a mutation called `createAuthor` with some arguments. Then the mutation just returned the mutated document. In this case it returned the newly added author's` _id` and `name` fields.
 
-Unlike in queries, we need to mention this is a mutation by starting the query with `mutation` keyword. See:
+Unlike for a query, we need to mention this is a mutation by starting the query with `mutation` keyword. See:
 
 ~~~
 mutation {
@@ -59,7 +59,7 @@ mutation {
 
 ---
 
-Now you've a little task to do. Try to add a new author, but do not include the `name` in the argument. What's the response you got:
+Now you've a little task to complete. Try to add a new author, but do not include the `name` argument. What's the response you got:
 
   - I could add the new author.
   - I could add the author, but server add `_id` as the name.
@@ -78,7 +78,7 @@ points: 5
 
 In our mutation `createAuthor`, `_id` and `name` are two required arguments. We can't invoke the mutation without them. That's why we got an error.
 
-> This is not unique for mutations, you can define required arguments for queries too. Also we can make fields in types also as required. For an example, we can define _id for Author is a required field.
+> This is not unique for mutations. We can make any argument required.
 
 You can use GraphQL Sandbox's Docs tab to inspect arguments. [See](https://cldup.com/ZzkRN_fr9R.gif).
 
@@ -94,7 +94,9 @@ points: 15
 
 ## Multiple Mutations
 
-Just like in queries, we can invoke multiple mutations and assign result into different variables. For an example, let's try to two authors as one:
+Just like in queries, we can invoke multiple mutations and assign result into different variables. 
+
+For an example, let's try to create two authors:
 
 ~~~
 mutation {
@@ -118,7 +120,7 @@ mutation {
 }
 ~~~
 
-As expected, we get a result like this:
+As expected, we got a result like this:
 
 ~~~
 {
@@ -190,4 +192,4 @@ points: 5
 
 Now we've learned how to invoke mutations againts a GraphQL server. It's just like a query, but a mutation change the dataset behind GraphQL.
 
-In our GraphQL Sandbox, we've another mutation called `createPost`. So, try to play with mutations by adding new posts and querying them.
+In our GraphQL Sandbox, we've another mutation called `createPost`. Try to play with adding new posts and querying them.

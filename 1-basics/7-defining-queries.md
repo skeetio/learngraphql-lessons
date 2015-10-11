@@ -3,9 +3,9 @@ name:  Defining Queries
 bulletPackage: free
 ```
 
-In previous lessons, we simply invoke queries against a Schema which is already defined. We didn't worry about looking at the Schema because, we wanted to master the query language.
+In previous lessons, we simply invoke queries against a schema which is already defined. We didn't worry about looking at the schema because, we wanted to master the query language.
 
-Now, we've a better understanding of the query language. Now it's the best time to start writing GraphQL Schemas.
+Now, we've a better understanding of the query language. Now it's the best time to start writing GraphQL schemas.
 
 Let's get started!
 
@@ -19,7 +19,7 @@ points: 5
 
 ## Setting Up
 
-First we need to download our GraphQL Sandbox and run it locally. That's the place where we will build our Schema.
+First we need to download our GraphQL Sandbox and run it locally. That's the place where we will define our Schema.
 
 Clone this repo:
 
@@ -46,7 +46,7 @@ Start the sandbox with:
 npm start
 ~~~
 
-Now you can open the sandbox in <http://localhost:3000.
+Now you can open the sandbox in <http://localhost:3000>.
 
 ![](https://cldup.com/MnoG2RvAja.png)
 
@@ -82,7 +82,7 @@ You'll get a result like:
 }
 ~~~
 
-So, let's have a look at the schema. For that, open the following file(inside the cloned repo) in an editor.
+So, let's have a look at the schema. For that, open the following file (inside the cloned repo) in an editor.
 
 * File: `src/schema.js`
 
@@ -96,12 +96,12 @@ const Schema = new GraphQLSchema({
 });
 ~~~
 
-Here we create a new GraphQL Schema object and register the `Query` (We also call this as the Root Query). This is what you've seen as `BlogQueries` in the documentation tab of our GraphQL Sandbox. Now let's see what's in this `Query` object. 
+Here we create a new GraphQL Schema object and register the `Query` (We also call this as the Root Query). This is what you've seen as `BlogSchema` in the documentation tab of our GraphQL Sandbox. Now let's see what's in this `Query` object. 
 
 
 ~~~
 const Query = new GraphQLObjectType({
-  name: 'BlogQueries',
+  name: 'BlogSchema',
   description: "Root of the Blog Schema",
   fields: () => ({
     echo: {
@@ -118,7 +118,7 @@ const Query = new GraphQLObjectType({
 });
 ~~~
 
-Here we are creating new GraphQLObjectType with a name called `BlogQueries`. Basically, we are creating a new GraphQL type called `BlogQueries`.
+Here we are creating new GraphQLObjectType with a name called `BlogSchema`. Basically, we are creating a new GraphQL type called `BlogSchema`.
 
 We've also given a description for our type. After that we've some fields in this type. 
 
@@ -197,7 +197,7 @@ points: 25
 
 ## Defining The Post Type
 
-Now we are going to define an actual type and write a proper root query field. Let's try to implement the `Post` type in our blog and create the root query field `getPosts`.
+Now we are going to define an actual type and write a proper root query field. Let's try to implement the `Post` type in our blog and create the root query field `posts`.
 
 Here's the minimal version of the `Post` type in our blog. 
 
@@ -219,14 +219,14 @@ Add this type to our `schema.js` file.
 
 > Define it just above our root query type definition.
 
-Now it's time to create the `getPosts` field in the root query. Here's how to do it:
+Now it's time to create the `posts` field in the root query. Here's how to do it:
 
 ~~~
 const Query = new GraphQLObjectType({
-  name: 'BlogQueries',
+  name: 'BlogSchema',
   description: "Root of the Blog Schema",
   fields: () => ({
-    getPosts: {
+    posts: {
       type: new GraphQLList(Post),
       resolve: function() {
         return PostsList;
@@ -236,11 +236,11 @@ const Query = new GraphQLObjectType({
 });
 ~~~
 
-Here `getPosts` field returns a list of posts (from `Post` type). In the resolve function, we simply return our posts stored in the `PostsList` array. `PostsList` is defined in the `src/data/posts.js` file and you can inspect it.
+Here `posts` field returns a list of posts (from `Post` type). In the resolve function, we simply return our posts stored in the `PostsList` array. `PostsList` is defined in the `src/data/posts.js` file and you can inspect it.
 
 > Here's how `schema.js` file looks like once you added all these changes: https://gist.github.com/arunoda/2cbba32de83bfa96099d
 
-Now visit to the locally running GraphQL Sanbox and try to query `getPosts` field.
+Now visit to the locally running GraphQL Sanbox and try to query `posts` field.
 
 > You may need to reload `http://localhost:3000` when you edited the `schema.js` file. Otherwise, auto completion may not work.
 
@@ -258,7 +258,7 @@ Now try to invoke following query:
 
 ~~~
 {
-  posts: getPosts {
+  posts: posts {
     title
   }
 }
@@ -306,9 +306,11 @@ const Post = new GraphQLObjectType({
 });
 ~~~
 
-Have a look at the `resolve` function of the `title` field. First argument in an object. It's one of the value in the `PostsList` array.
+Have a look at the `resolve` function of the `title` field. Here we specifically, defined a resolve function to provide the content for the title field.
 
-Then we can customize the actual value in the data source and return anything we need. That's exactly what we are doing here.
+First arguments of the resolve function is an object. It's one of the value in the `PostsList` array.
+
+Then we can customize the actual value in the data source and return anything we need.
 
 *****
 ```
@@ -319,7 +321,7 @@ points: 20
 
 ## Defining Nested Fields
 
-Now we are trying to define a nested field into our Schema. For an example, let's try to add a `author` field to our `Post` type.
+Now we are trying to define a nested field into our schema. For an example, let's try to add an `author` field to our `Post` type.
 
 For that, first we need to create the `Author` type.
 
@@ -334,7 +336,7 @@ const Author = new GraphQLObjectType({
 });
 ~~~
 
-Then let's define the author field in our `Post` type.
+Then let's define the `author` field in our `Post` type.
 
 ~~~
 const Post = new GraphQLObjectType({
@@ -364,7 +366,7 @@ Now invoke following query:
 
 ~~~
 {
-  posts: getPosts {
+  posts {
     title,
     author {
       name
@@ -389,6 +391,6 @@ points: 5
 
 ## Finally
 
-Now you know how to define a GraphQL Schema and resolve fields. We've also discussed on how to write nested fields. Now you can define as many as nested fields you like.
+Now you know how to define a GraphQL Schema and resolve fields. We've also discussed on how to write nested fields. Just like that you can define as many as nested fields.
 
-That's how you build your dataset as a graph. We'll explore more about GraphQL Schema in upcoming lessons.
+That's how you build your dataset as a graph. We'll explore more about GraphQL schemas in upcoming lessons.

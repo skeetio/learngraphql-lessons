@@ -3,17 +3,17 @@ name:  Query Variables
 bulletPackage: free
 ```
 
-When we are writing some GraphQL queries, it's very common to use arguments. This is how we normally do it.
+When we are writing some GraphQL queries, it's very common to use arguments. This is how we normally do it by hardcoding them.
 
 ~~~
 {
-  recentPosts: getRecentPosts(count: 10) {
+  recentPosts: recentPosts(count: 10) {
     title
   }
 }
 ~~~
 
-> This can be inefficient and hard to manage since we need to generate a query every time when we need to change the argument.
+Let's say, we need to change count as `20`. Then, we need to generate this query again. This can be hard to manage in a real app.
 
 With this approach, there is no possible way to set some of these arguments inside the server. Normally, `userId` is an argument we **must** set from the server side.
 
@@ -31,11 +31,11 @@ points: 5
 
 ## Named Queries
 
-In previous lessons, we defined the GraphQL query using the shorthand syntax. See:
+In previous lessons, we defined GraphQL queries using the shorthand syntax. See:
 
 ~~~
 {
-  recentPosts: getRecentPosts(count: 10) {
+  recentPosts: recentPosts(count: 10) {
     title
   }
 }
@@ -45,14 +45,14 @@ In previous lessons, we defined the GraphQL query using the shorthand syntax. Se
 But, this is how to write it with the complete syntax.
 
 ~~~
-query getFewPosts() {
-  recentPosts: getRecentPosts(count: 10) {
+query getFewPosts {
+  recentPosts: recentPosts(count: 10) {
     title
   }
 }
 ~~~
 
-Here we used the `query` keyword and gave a name to the query. You can give any name you need. In the shorthand version, we simply ignored `query getFewPosts()` part from the complete syntax.
+Here we used the `query` keyword and gave a name to the query. You can give any name you need. In the shorthand version, we simply ignored `query getFewPosts` part from the complete syntax.
 
 > We need to write queries with the complete syntax to use query variables.
 
@@ -69,8 +69,8 @@ points: 20
 Let's say, we need to use a query variable for the `count` argument in the following query. 
 
 ~~~
-query getFewPosts() {
-  recentPosts: getRecentPosts(count: 10) {
+query getFewPosts {
+  recentPosts: recentPosts(count: 10) {
     title
   }
 }
@@ -80,7 +80,7 @@ Then this is how we could write it.
 
 ~~~
 query getFewPosts($postCount: Int!) {
-  recentPosts: getRecentPosts(count: $postCount) {
+  recentPosts: recentPosts(count: $postCount) {
     title
   }
 }
@@ -88,7 +88,7 @@ query getFewPosts($postCount: Int!) {
 
 Here we've defined a query variable called `postCount` with the type of `Int`. We also marked it as required by using `!` at the end.
 
-> We had to make `postCount` query variable required. That's because `count` argument for `getRecentPosts` is a required argument.
+> We had to make `postCount` query variable required. That's because `count` argument for `recentPosts` is a required argument.
 
 ### How To Provide Query Variables
 
@@ -96,7 +96,7 @@ So, you might have a problem with how to provide query variables?
 
 We normally provide query variables when we are executing the query in the server. For now, we are not going to worry about how exactly we do it. We'll do it in another lesson.
 
-In our GraphQL Sandbox, we've separate tab where we can write query variables. See following image:
+In our GraphQL Sandbox, we've a separate tab where we can write query variables. See following image:
 
 ![](https://cldup.com/EJVOyG42CJ.png)
 
@@ -131,7 +131,7 @@ Once defined, we can use a query variable anywhere in our queries. This is how w
 
 ~~~
 query getFewPosts($postCount: Int!, $commentCount: Int) {
-  recentPosts: getRecentPosts(count: $postCount) {
+  recentPosts: recentPosts(count: $postCount) {
     title,
     comments(limit: $commentCount) {
       content
@@ -144,7 +144,7 @@ We can also use it inside a fragment:
 
 ~~~
 query getFewPosts($postCount: Int!, $commentCount: Int) {
-  recentPosts: getRecentPosts(count: $postCount) {
+  recentPosts: recentPosts(count: $postCount) {
     title,
     ...comments
   }
@@ -189,7 +189,7 @@ Have a look at this query:
 
 ~~~
 query getFewPosts($category: Category) {
-  posts: getPosts(category: $category) {
+  posts: posts(category: $category) {
     title
   }
 }
