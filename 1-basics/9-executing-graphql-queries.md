@@ -9,9 +9,7 @@ Now it's time to learn about how to run GraphQL schemas on our own. For this les
 
 ### Using "graphql" Npm Module
 
-`graphql` npm module is the only tool(or library) you want to define a basic Schema and execute a query against it.
-
-In this lesson, we play with a very simple schema to make things simple and understandable.
+`graphql` npm module is the only tool(or library) you want to define a basic schema and execute a query against it.
 
 Let's get started!
 
@@ -120,7 +118,7 @@ Now try to run our file with:
 babel-node index.js
 ~~~
 
-If everything is correct, the script will completed without printing anything.
+If everything is correct, the script will complete without printing anything.
 
 *****
 
@@ -133,6 +131,8 @@ points: 5
 ## Executing a Query
 
 Now it's time to execute a query. So, let's assign our query into a variable.
+
+> Add these content to the end of the `index.js.`
 
 ~~~
 let query = `
@@ -150,7 +150,7 @@ graphql(Schema, query).then(function(result) {
 });
 ~~~
 
-Here we `graphql` function from the `graphql` npm module to execute a query. It returns a promise and that's why we use `.then` to get the result.
+Here, we use `graphql` function from the `graphql` npm module to execute a query. It returns a promise and that's why we use `.then` to get the result.
 
 Execute our script with:
 
@@ -239,7 +239,7 @@ points: 5
 
 What we've learned is the very basic way to execute GraphQL queries. `graphql` npm module is isomorphic. So, you can use it in both client and the server.
 
-But when you are using it with a real app, there are some other high-level tools(or modules) you can use. Here are few of them:
+When you are using it with a real app, you can get some help from high level modules which generates GraphQL schemas for you. Here are few of them:
 
 * [express-graphql](https://github.com/graphql/express-graphql) - This project allows to create a graphql server with [express](http://expressjs.com/).
 * [graffiti](https://github.com/RisingStack/graffiti) - This project allows you to use existing mongoose schema with GraphQL

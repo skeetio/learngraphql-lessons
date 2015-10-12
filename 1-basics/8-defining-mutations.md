@@ -46,7 +46,7 @@ This will start a local version of our GraphQL Sandbox and you can access it fro
 
 ![](https://cldup.com/MnoG2RvAja.png)
 
-This Sandbox has a schema which looks similar to what we used in first few lessons. But, it's a cut down version which we've built in the previous lesson.
+This Sandbox has a schema which looks similar to what we used in first few lessons. But, it's a cut down version. (It's very similar to what we've built in the previous lesson).
 
 You can look at it by inspecting the `src/schema.js` in the cloned repo. That's the place where, we also going to write mutation related code.
 
@@ -65,7 +65,7 @@ Now we are going to write our first mutation. It's a mutation to add a new post 
 
 ~~~
 mutation insertFirstPost() {
-  post: addNewPost(
+  post: createPost(
     title: "GraphQL is Awesome",
     content: "Yep, it's purely awesome."
   ) {
@@ -82,7 +82,7 @@ const Mutation = new GraphQLObjectType({
   name: "BlogMutations",
   description: "Mutations of our blog",
   fields: () => ({
-    addNewPost: {
+    createPost: {
       type: Post,
       args: {
         title: {type: new GraphQLNonNull(GraphQLString)},
@@ -106,7 +106,9 @@ const Mutation = new GraphQLObjectType({
 });
 ~~~
 
-Now we need to assign this to our Schema. So, update our schema to be like this:
+Here in the `resolve` function, we simply add a new post to the `PostList` array and return it.
+
+Now we need to assign this to our schema. So, update our schema to be like this:
 
 ~~~
 const Schema = new GraphQLSchema({
@@ -119,7 +121,7 @@ That's all. Now try to invoke following mutation:
 
 ~~~
 mutation insertFirstPost {
-  post: addNewPost(
+  post: createPost(
     title: "GraphQL is Awesome",
     content: "Yep, it's purely awesome."
   ) {
@@ -138,7 +140,7 @@ Try to invoke following query.
 
 ~~~
 mutation insertFirstPost {
-  post: addNewPost(
+  post: createPost(
     title: "GraphQL is Awesome"
   ) {
     _id,

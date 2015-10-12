@@ -36,4 +36,4 @@ You can learn more by looking at samples schemas. So, have a look at these schem
 
 Repo: <https://github.com/chentsulin/awesome-graphql>
 
-Above repo concatnates most of resources, libararies, different graphql impletements and many other graphql goodies into single place.
+Above repo concatenates most of resources, libraries, different graphql implementations and many other GraphQL goodies into a single place.

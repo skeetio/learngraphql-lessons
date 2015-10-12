@@ -3,9 +3,9 @@ name:  Using A Real Data Source
 bulletPackage: free
 ```
 
-We played a lot with GraphQL schemas and querying them. But we were using in memory data sources in all those cases. But in real world, we need to use some real data sources.
+We played a lot with GraphQL. We were using in-memory data sources everytime. But in real world, we need to use real data sources behind a GraphQL schema.
 
-That's what we are going to do in this lesson. We'll be using MongoDB as our data source. At the end, We'll show you some other ways to integrate other data sources.
+That's what we are going to do in this lesson. We'll be using MongoDB as our data source. At the end, We'll show you how to integrate other data sources as well.
 
 Let's get started!
 
@@ -45,13 +45,13 @@ That'll start our sandbox in <http://localhost:3000>
 
 ---
 
-This version of sandbox is bit different. Earlier, we defined our schemas in the client side. But now, we are doing it inside the server. 
+This version of sandbox is bit different from the previous versions. Earlier, we defined our schemas in the client side. But now, we are doing it inside the server. 
 
 For that, we are using the [express-graphql](https://github.com/graphql/express-graphql) project.
 
 #### Schema File
 
-In this repo, our schema file is located in `server/schema.js`. We've already defined a root query field called `getAuthors` and a mutation called `addNewAuthor`. 
+In this repo, our schema file is located in `server/schema.js`. We've already defined a root query field called `authors` and a mutation called `createAuthor`. 
 
 If you followed previous lessons, those should be familar to you. 
 
@@ -92,7 +92,7 @@ const db = mongo('mongodb://localhost/mydb');
 const authorsCollection = db.collection('authors');
 ~~~
 
-Now it's time to write the logic inside our mutation `addNewAuthor`. For that, we will be using `promised-mongo` package's promise API.
+Now it's time to write the logic inside our mutation `createAuthor`. For that, we will be using `promised-mongo` package's promise API.
 
 So, this will be our mutation with mongo related code:
 
@@ -100,7 +100,7 @@ So, this will be our mutation with mongo related code:
 const Mutation = new GraphQLObjectType({
   name: "Mutations",
   fields: {
-    addNewAuthor: {
+    createAuthor: {
       type: Author,
       args: {
         _id: {type: new GraphQLNonNull(GraphQLString)},
@@ -121,7 +121,7 @@ Now you can invoke a mutation from our GraphQL Sandbox like this:
 
 ~~~
 mutation _ {
-  addNewAuthor(
+  createAuthor(
     _id: "john",
     name: "John Carter"
   ) {
@@ -135,7 +135,7 @@ Then you'll get following as the result:
 ~~~
 {
   "data": {
-    "addNewAuthor": {
+    "createAuthor": {
       "name": "John Carter"
     }
   }
@@ -163,15 +163,15 @@ points: 20
 
 ## Implement The Root Query Field
 
-Now we've a way to add new authors. Let's implement the `getAuthors` query field. 
+Now we've a way to add new authors. Let's implement the `authors` query field. 
 
 So, this will be our root query type with the MongoDB integration.
 
 ~~~
 const Query = new GraphQLObjectType({
-  name: "Queries",
+  name: "RootQuery",
   fields: {
-    getAuthors: {
+    authors: {
       type: new GraphQLList(Author),
       resolve: function() {
         return authorsCollection.find().toArray();
@@ -185,7 +185,7 @@ Then you can try to get authors from the GraphQL Sandbox with:
 
 ~~~
 {
-  getAuthors {
+  authors {
     name
   }
 }
@@ -223,7 +223,7 @@ There is no direct way to get fields from the resolve function. But, there are w
 const Query = new GraphQLObjectType({
   name: "Queries",
   fields: {
-    getAuthors: {
+    authors: {
       type: new GraphQLList(Author),
       resolve: function(rootValue, args, info) {
         let fields = {};
@@ -238,7 +238,7 @@ const Query = new GraphQLObjectType({
 });
 ~~~
 
-Here we are using the info argument(3rd argument) pass to the resolve function. It has the parsed [AST](https://en.wikipedia.org/wiki/Abstract_syntax_tree) of the query. Using that, we can get fields. That's what we've done in the above code.
+Here we are using the info argument(3rd argument) passed to the resolve function. It has the parsed [AST](https://en.wikipedia.org/wiki/Abstract_syntax_tree) of the query. Using that, we can get fields. That's what we've done in the above code.
 
 *****
 
