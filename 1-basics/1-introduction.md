@@ -3,13 +3,13 @@ name: Introduction to GraphQL
 bulletPackage: free
 ```
 
-GraphQL is an **application layer query language** from Facebook. With GraphQL, you can define your backend as a well define [graph](https://goo.gl/9JgOxd) based Schema.  Then client applications can query your dataset as they needed. 
+[GraphQL](http://graphql.org/) is an **application layer query language** from Facebook. With GraphQL, you can define your backend as a well-defined [graph](https://goo.gl/9JgOxd)-based schema. Then client applications can query your dataset as they are needed. 
 
 ![GraphQL Overview](https://cldup.com/ysnmIMhqRU.png)
 
-So, you don't need to change your backend for data requirement changes in client apps. This just solves one of the biggest issue in REST apis.
+So, you don't need to change your backend for data requirement changes in client apps. This simply solves one of the biggest problems in managing REST API.
 
-GraphQL also allows client applications to batch and fetch data very efficiently. For an example, have a look at the following GraphQL query. 
+GraphQL also allows client applications to batch and fetch data very efficiently. For an example, have a look at the following GraphQL query:
 
 ~~~
 {
@@ -61,12 +61,12 @@ This is a GraphQL query to fetch data for a blog post with comments and author i
 }
 ~~~
 
-If you are using REST, you need invoke multiple API calls to get these information.
+If you are using REST, you need to invoke multiple API calls to gather this information.
 
 **GraphQL is a specification.**
 
-So, it can be used with any platform and any language. It has a reference implementation on [JavaScript](https://github.com/graphql/graphql-js), maintained by Facebook. There are well maintained community [implementations](https://github.com/chentsulin/awesome-graphql#table-of-contents) in many languages. 
+So, it can be used with any platform and any language. It has a reference implementation on [JavaScript](https://github.com/graphql/graphql-js), maintained by Facebook. There are well-maintained community [implementations](https://github.com/chentsulin/awesome-graphql#table-of-contents) exists in many languages. 
 
 > Here's the specification: <http://facebook.github.io/graphql/>
 
-Once you tried GraphQL, you will want to use it with your every project.
+Once you have tried GraphQL, you will want to use it with every one of your projects.
