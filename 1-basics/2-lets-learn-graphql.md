@@ -15,7 +15,7 @@ We introduce GraphQL to you step by step by presenting key topics one by one. Oc
 
 ## What knowledge do I need to have?
 
-We start with basics, so you don't need to know anything about GraphQL. However, you need to have a sound knowledge of JavaScript. We'll also use [ES2015](https://github.com/ericdouglas/ES6-Learning) syntax, which you can learn about here.
+We start with basics, so you don't need to know anything about GraphQL. However, you need to have a sound knowledge of JavaScript. We'll also use [ES2015](https://github.com/ericdouglas/ES6-Learning) syntax, which you can learn from [here](https://github.com/lukehoban/es6features).
 
 > We also use Node.js only when you are learning to write your own GraphQL schemas. Even if you don't have any experience in [NodeJS](https://nodejs.org/en/), you can follow these lessons. (Make sure you have NodeJS installed on your system.)
 
