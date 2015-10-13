@@ -3,9 +3,9 @@ name:  Defining Queries
 bulletPackage: free
 ```
 
-In previous lessons, we simply invoke queries against a schema which is already defined. We didn't worry about looking at the schema because, we wanted to master the query language.
+In previous lessons, we simply invoked queries against a schema that was already defined. We didn't worry about looking at the schema because we wanted to master the query language.
 
-Now, we've a better understanding of the query language. Now it's the best time to start writing GraphQL schemas.
+Now, we've a better understanding of the query language. So now is the best time to start writing GraphQL schemas.
 
 Let's get started!
 
@@ -17,9 +17,9 @@ type:   text
 points: 5
 ```
 
-## Setting Up
+## Setting up
 
-First we need to download our GraphQL Sandbox and run it locally. That's the place where we will define our Schema.
+First we need to download our GraphQL Sandbox and run it locally. That's the place where we will define our schema.
 
 Clone this repo:
 
@@ -27,7 +27,7 @@ Clone this repo:
 git clone https://github.com/kadirahq/graphql-blog-schema.git
 ~~~
 
-Then checkout `build-schema` branch:
+Then check out the `build-schema` branch:
 
 ~~~
 cd graphql-blog-schema
@@ -46,7 +46,7 @@ Start the sandbox with:
 npm start
 ~~~
 
-Now you can open the sandbox in <http://localhost:3000>.
+Now you can open the sandbox at <http://localhost:3000>.
 
 ![](https://cldup.com/MnoG2RvAja.png)
 
@@ -60,9 +60,9 @@ type:   mcq
 points: 25
 ```
 
-## Inspecting The Schema
+## Inspecting the schema
 
-In our GraphQL Sandbox, it has a schema which contains a simple query field called `echo`. It accepts a message as an arguments and return it.
+Our GraphQL Sandbox has a schema that contains a simple query field called `echo`. It accepts a message as an argument and returns it.
 
 Try running this query:
 
@@ -86,9 +86,9 @@ So, let's have a look at the schema. For that, open the following file (inside t
 
 * File: `src/schema.js`
 
-It's a self documented file and used [ES2015](https://github.com/lukehoban/es6features). We've also used ES2015 [modules](https://github.com/lukehoban/es6features#modules).
+It's a self-documented file that uses [ES2015](https://github.com/lukehoban/es6features). We've also used ES2015 [modules](https://github.com/lukehoban/es6features#modules).
 
-At the end of the file, we've defined our Schema like this:
+At the end of the file, we've defined our schema like this:
 
 ~~~
 const Schema = new GraphQLSchema({
@@ -96,8 +96,7 @@ const Schema = new GraphQLSchema({
 });
 ~~~
 
-Here we create a new GraphQL Schema object and register the `Query` (We also call this as the Root Query). This is what you've seen as `BlogSchema` in the documentation tab of our GraphQL Sandbox. Now let's see what's in this `Query` object. 
-
+Here we create a new GraphQL schema object and register the `Query` (we also call this the Root Query). This is what you've seen as `BlogSchema` in the documentation tab of our GraphQL Sandbox. Now let's see what's in this `Query` object.
 
 ~~~
 const Query = new GraphQLObjectType({
@@ -118,17 +117,17 @@ const Query = new GraphQLObjectType({
 });
 ~~~
 
-Here we are creating new GraphQLObjectType with a name called `BlogSchema`. Basically, we are creating a new GraphQL type called `BlogSchema`.
+Here we are creating a new GraphQLObjectType called `BlogSchema`.
 
-We've also given a description for our type. After that we've some fields in this type. 
+We've also given a description for our type. After that, we've some fields in this type. 
 
-We've a just one field called `echo`. It's a string (GraphQLString).
+We've have one field called `echo`. It's a string (GraphQLString).
 
 > You can look at the top of the `schema.js` to see common types in GraphQL.
 
 This `echo` field also has an argument called `message`.
 
-> It's also possible to add a description to that argument. Here's how to do it.
+> It's also possible to add a description to that argument. Here's how to do it:
 
 ~~~
 {
@@ -140,7 +139,7 @@ This `echo` field also has an argument called `message`.
 }
 ~~~
 
-Next, we've the resolve function which is the place we can implement the logic for this query and return a value.
+Next, we've the resolve function, which is the place where we can implement the logic for this query and return a value.
 
 ~~~
 {
@@ -152,13 +151,13 @@ Next, we've the resolve function which is the place we can implement the logic f
 }
 ~~~
 
-Second argument of the resolve function comes with values for arguments as defined in the query.
+The second argument of the resolve function comes with values for arguments as defined in the query.
 
-That's all you need know about our simple GraphQL schema.
+That's all you need to know about our simple GraphQL schema.
 
 ---
 
-Now we've a simple task for you. Try to return following object from the `resolve` function.
+Now we've a simple task for you. Try to return the following object from the `resolve` function:
 
 ~~~
 {aa: 10};
@@ -171,7 +170,7 @@ What was the result:
   - {aa: 10}, // Object
   - {"aa": 10} // JSON string
   - **[object Object]**
-  - There was an error
+  - There was an error.
 
 *****
 
@@ -181,9 +180,9 @@ type:   text
 points: 5
 ```
 
-We got the result as **[object Object]**. Here's the reason.
+We got the result as **[object Object]**. Here's why?
 
-Type of the `echo` is a string. Then, GraphQL tries to get a string from the return value of the resolve function. Normally, `[object Object]` is the string value of any object. That's why we get that result.
+The `echo` type is a string. Then, GraphQL tries to get a string from the return value of the resolve function. Normally, `[object Object]` is the string value of any object. That's why we get that result.
 
 Try to return other values from different types and inspect the result. Also, try to change the type of the `echo` field and understand how this works.
 
@@ -195,11 +194,11 @@ type:   mcq
 points: 25
 ```
 
-## Defining The Post Type
+## Defining the post type
 
 Now we are going to define an actual type and write a proper root query field. Let's try to implement the `Post` type in our blog and create the root query field `posts`.
 
-Here's the minimal version of the `Post` type in our blog. 
+Here's the minimal version of the `Post` type in our blog.
 
 ~~~
 const Post = new GraphQLObjectType({
@@ -236,25 +235,25 @@ const Query = new GraphQLObjectType({
 });
 ~~~
 
-Here `posts` field returns a list of posts (from `Post` type). In the resolve function, we simply return our posts stored in the `PostsList` array. `PostsList` is defined in the `src/data/posts.js` file and you can inspect it.
+Here, the `posts` field returns a list of posts (from `Post` type). In the resolve function, we simply return our posts stored in the `PostsList` array. `PostsList` is defined in the `src/data/posts.js` file and you can inspect it.
 
-> Here's how `schema.js` file looks like once you added all these changes: https://gist.github.com/arunoda/2cbba32de83bfa96099d
+> Here's how the `schema.js` file looks once you've added all these changes: https://gist.github.com/arunoda/2cbba32de83bfa96099d
 
-Now visit to the locally running GraphQL Sanbox and try to query `posts` field.
+Now visit the locally running GraphQL Sandbox and try to query the `posts` field.
 
-> You may need to reload `http://localhost:3000` when you edited the `schema.js` file. Otherwise, auto completion may not work.
+> You may need to reload `http://localhost:3000` when you edit the `schema.js` file. Otherwise, autocompletion may not work.
 
 ---
 
 Now you've to do a simple task.
 
-Return following value from the `resolve` function instead of the `PostsList`.
+Return the following value from the `resolve` function instead of the `PostsList`:
 
 ~~~
 [{}]
 ~~~
 
-Now try to invoke following query:
+Now try to invoke the following query:
 
 ~~~
 {
@@ -264,12 +263,12 @@ Now try to invoke following query:
 }
 ~~~
 
-What's the result you got?
+What result did you get?
 
-  - Empty value for the title
-  - **Error as: Cannot return null for non-nullable field Post.title.**
-  - Error as: Needs Post.title in the return value
-  - "null" value for the title
+  - Empty value for the title.
+  - **Error as: Cannot return null for non-nullable field Post.title .**
+  - Error as: Needs Post.title in the return value.
+  - "null" value for the title.
 
 *****
 
@@ -279,15 +278,15 @@ type:   text
 points: 5
 ```
 
-## Defining Default Values
+## Defining default values
 
-You'll get an error saying "Cannot return null for non-nullable field Post.title." This is because, we defined the `title` field as a required value.
+You'll get an error saying, "Cannot return null for non-nullable field Post.title." This is because we defined the `title` field as a required value.
 
-But sometimes in our dataset, we might have some posts with empty values for title. That's due to some inconstancy in our dataset. But, that shouldn't throw an error.
+But sometimes in our dataset, we might have some posts with empty values for a title. That's due to some inconstancy in our dataset. But that shouldn't throw an error.
 
-So, in this case we've two options. Either make `title` as an optional value or define a default value for the type. 
+So, in this case we've two options: Either make `title` as an optional value or define a default value for the type. 
 
-For the time being, let's keep the `title` as a required field. Then, we can try to add a default value if there no value for the `title`.
+For the time being, let's keep the `title` as a required field. Then we can try to add a default value if there is no value for the `title`.
 
 ~~~
 const Post = new GraphQLObjectType({
@@ -306,9 +305,9 @@ const Post = new GraphQLObjectType({
 });
 ~~~
 
-Have a look at the `resolve` function of the `title` field. Here we specifically, defined a resolve function to provide the content for the title field.
+Have a look at the `resolve` function of the `title` field. Here we specifically defined a resolve function to provide the content for the title field.
 
-First arguments of the resolve function is an object. It's one of the value in the `PostsList` array.
+First argument of the resolve function is an object. It's one of the values in the `PostsList` array.
 
 Then we can customize the actual value in the data source and return anything we need.
 
@@ -319,7 +318,7 @@ type: mcq
 points: 20
 ```
 
-## Defining Nested Fields
+## Defining nested fields
 
 Now we are trying to define a nested field into our schema. For an example, let's try to add an `author` field to our `Post` type.
 
@@ -354,15 +353,15 @@ const Post = new GraphQLObjectType({
 });
 ~~~
 
-In our `PostsList` dataset each object(post) has a string value for the "author". That's the `_id` of the author which is stored in `AuthorsList`. 
+In our `PostsList` dataset, each object(post) has a string value for the "author". That's the `_id` of the author, which is stored in `AuthorsList`. 
 
-So, `author` field's resolve function simply find the correct author and return him. We've also defined the type of the `author` field as `Author`.
+So, the resolve function of the `author` field simply finds the correct author and returns him. We've also defined the type of the `author` field as `Author`.
 
-> Here's the final `schema.js` file looks like: https://gist.github.com/arunoda/c29128be2c5e979475ec
+> Here's what the final `schema.js` file looks like: <https://gist.github.com/arunoda/c29128be2c5e979475ec>.
 
 ---
 
-Now invoke following query:
+Now invoke the following query:
 
 ~~~
 {
@@ -375,7 +374,7 @@ Now invoke following query:
 }
 ~~~
 
-Find out, how many posts created by author "Kasun Indi"?
+How many posts were created by author "Kasun Indi":
 
   - **1**
   - 2
@@ -391,6 +390,6 @@ points: 5
 
 ## Finally
 
-Now you know how to define a GraphQL Schema and resolve fields. We've also discussed on how to write nested fields. Just like that you can define as many as nested fields.
+Now you know how to define a GraphQL schema and resolve fields. We've also discussed how to write nested fields. In this way you can define as many nested fields as you like.
 
 That's how you build your dataset as a graph. We'll explore more about GraphQL schemas in upcoming lessons.
