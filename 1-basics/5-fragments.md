@@ -3,9 +3,9 @@ name:  Fragments
 bulletPackage: free
 ```
 
-In GraphQL, fragments are the way to group commonly used fileds and reuse them. 
+In GraphQL, fragments are the way to group commonly used fields and reuse them. 
 
-For an example, let's say we need to get some authors in our blog. So, this is a query we can write:
+As an example, let's say we need to get some authors in our blog. So, this query can be written as:
 
 ~~~
 {
@@ -29,7 +29,7 @@ For an example, let's say we need to get some authors in our blog. So, this is a
 
 Now, we are writing the fields of the `Author` type again and again. We could use fragments to avoid that.
 
-Let's see how to use fragments.
+Let's see how to use fragments:
 
 *****
 
@@ -39,7 +39,7 @@ type:   text
 points: 10
 ```
 
-## Hello Fragments
+## Hello fragments
 
 Have a look at this query:
 
@@ -63,7 +63,7 @@ Have a look at this query:
 }
 ~~~
 
-Here we are writing the same set of fields again and again. It would be great, if we can have a way to reuse fields. That's where fragments comes handy.
+Here we are writing the same set of fields again and again. It would be great if we could find a way to reuse these fields. That's where fragments are useful.
 
 So check this query. It's the same as above, but with fragments:
 
@@ -87,7 +87,7 @@ fragment authorInfo on Author {
 }
 ~~~
 
-Here we've defined a fragment on the `Author` type and include fields we want. Then, we can use them in queries with the spread operatior (`...`) as shown in the above query.
+Here we've defined a fragment on the `Author` type and included the fields we want. Then, we can use them in queries with the spread operator (`...`) as shown in the above query.
 
 *****
 
@@ -97,9 +97,9 @@ type:   mcq
 points: 15
 ```
 
-## Mixing Fragments and Fields
+## Mixing fragments and fields
 
-We can mix fragments and fields together. For an example, have a look at this query.
+We can mix fragments and fields together. As an example, have a look at this query:
 
 ~~~
 {
@@ -115,13 +115,13 @@ fragment requiredAuthorInfo on Author {
 }
 ~~~
 
-Here we are using a fragment to get `_id` and `name`. Also, we've defined `twitterHandle` field additionally.
+Here we are using a fragment to get `_id` and `name`. Also, we've defined the `twitterHandle` field.
 
 ---
 
 So, here's a simple question for you.
 
-What happened, if you re-defined a field exists in the fragment?
+What would happen if you re-defined a field that already existed in the fragment?
 
 ~~~
 {
@@ -133,12 +133,12 @@ What happened, if you re-defined a field exists in the fragment?
 }
 ~~~
 
-Invoke this query and see what's the response is?
+Invoke this query and see what response you get:
 
-  - It throws an error saying: _id is already defined
-  - **Query executed without any issues**
-  - It throws an error saying: Incorrect query
-  - Query executed without any issues, but it gives a warnning about the duplicate _id field.
+  - It throws an error saying: _id is already defined.
+  - **Query executed without any issues.**
+  - It throws an error saying: Incorrect query.
+  - Query executed without any issues, but it gives a warning about the duplicate _id field.
 
 *****
 
@@ -148,9 +148,9 @@ type:   text
 points: 5
 ```
 
-## Fragments With Nested Fields
+## Fragments with nested fields
 
-In a fragment, we can define nested fields as well. That's where fragments are starting to be very useful. For an example, have a look at the following query:
+In a fragment, we can define nested fields as well. That's where fragments are starting to be very useful. As an example, have a look at the following query:
 
 ~~~
 {
@@ -184,9 +184,9 @@ type:   text
 points: 5
 ```
 
-## Fragments with Nested Fragments
+## Fragments with nested fragments
 
-You can also use fragments inside some other fragments as well. Have a look this query:
+You can also use fragments inside some other fragments. Have a look this query:
 
 ~~~
 {
@@ -218,7 +218,7 @@ fragment authorInfo on Author {
 }
 ~~~
 
-Here we've used `authorInfo` fragment inside `postInfo` fragment. 
+Here we've used an `authorInfo` fragment inside a `postInfo` fragment. 
 
 We can also improve this query like this:
 
@@ -250,7 +250,7 @@ fragment on HasAuthor {
 }
 ~~~
 
-For that, we need to learn about interfaces. We'll do it in a different lesson in this course.
+For that, we need to learn about interfaces, in which will be covered in a different lesson in this course.
 
 *****
 
@@ -262,6 +262,6 @@ points: 5
 
 ## Finally
 
-Now we've a good understanding about fragments and how we use them in GraphQL queries. You can also use fragments with mutations, since mutation is a variation of queries.
+Now we've a good understanding about fragments and how we use them in GraphQL queries. You can also use fragments with mutations, since a mutation is a variation of queries.
 
-When we are talking about how to use GraphQL in a client app, fragments plays a huge role. We'll talk more about that later on.
+When we are talking about how to use GraphQL in a client app, fragments play a huge role. We'll talk more about that later on.
