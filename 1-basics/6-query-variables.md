@@ -202,8 +202,6 @@ Here we are trying to filter posts by a category. The `category` argument expect
 }
 ~~~
 
-Okay, here's the question for you. 
-
 Okay, here's a question for you. 
 
 From the list below, select a category that does not exist in our blog:
