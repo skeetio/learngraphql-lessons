@@ -34,7 +34,7 @@ To interact with this schema, you'll use our [GraphQL Sandbox](https://sandbox.l
 
 So, it's a good idea to watch the following video in order that you can familiarise yourself with it.
 
-...
+<iframe width="100%" height="500" src="https://www.youtube.com/embed/Ou8PjP3dUI4?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen="1"></iframe>
 
 ## This will be fun
 

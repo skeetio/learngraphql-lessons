@@ -15,7 +15,7 @@ When we are composing some GraphQL queries, it's very common to use arguments. T
 
 Let's say, we need to change the count to `20`. Then we need to generate this query again. This can be hard to manage in a real app.
 
-Using this approach, there is no possible way to set some of these arguments inside the server. Normally, `userId` is an argument we **must** set from the server side.
+Using this approach, there is no possible way to set some of these arguments inside the server. Normally in a typical app, `userId` is an argument we **must** set from the server side.
 
 But fortunately, GraphQL has a better way to pass values to the queries rather than hard coding them inside the query. That's the job of **query variables**.
 
