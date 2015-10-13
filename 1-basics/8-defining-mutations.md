@@ -3,9 +3,9 @@ name:  Defining Mutations
 bulletPackage: free
 ```
 
-In GraphQL, mutations is the way to allow GraphQL clients(or external parties) to modify your dataset.
+In GraphQL, mutations are the way to allow GraphQL clients(or external parties) to modify your dataset.
 
-Defining mutations is much similar to defining queries. Only difference is how you implement the logic inside the mutation.
+Defining mutations is very similar to defining queries. The only difference is how you implement the logic inside the mutation.
 
 Let's define some mutations.
 
@@ -18,9 +18,9 @@ points: 5
 ```
 
 
-## Setting Up
+## Setting up
 
-> This lesson is the continuation of the previous lesson [Defining Queries](/basics/defining-queries). We assume, you've already completed that lesson.
+> This lesson is a continuation of the previous lesson [Defining Queries](/basics/defining-queries). We will assume you've already completed that lesson.
 
 Clone our GraphQL Sandbox:
 
@@ -28,14 +28,14 @@ Clone our GraphQL Sandbox:
 git clone https://github.com/kadirahq/graphql-blog-schema.git
 ~~~
 
-Then checkout `defining-mutations` branch:
+Then check out the `defining-mutations` branch:
 
 ~~~
 cd graphql-blog-schema
 git checkout defining-mutations
 ~~~
 
-Now, install dependencies and start the sandbox:
+Now, install the dependencies and start the sandbox:
 
 ~~~
 npm install
@@ -46,9 +46,9 @@ This will start a local version of our GraphQL Sandbox and you can access it fro
 
 ![](https://cldup.com/MnoG2RvAja.png)
 
-This Sandbox has a schema which looks similar to what we used in first few lessons. But, it's a cut down version. (It's very similar to what we've built in the previous lesson).
+This sandbox has a schema that looks similar to what we used in the first few lessons. But it's a scaled-down version. (It's very similar to what we built in the previous lesson.)
 
-You can look at it by inspecting the `src/schema.js` in the cloned repo. That's the place where, we also going to write mutation related code.
+You can look at it by inspecting the `src/schema.js` in the cloned repo. That's the place where we are also going to write mutation-related code.
 
 *****
 
@@ -58,10 +58,9 @@ type:   mcq
 points: 20
 ```
 
+## Hello mutations
 
-## Hello Mutations
-
-Now we are going to write our first mutation. It's a mutation to add a new post to our blog. So, this is the mutation request we are going to invoke.
+Now we are going to write our first mutation. It's a mutation to add a new post to our blog. So, this is the mutation request we are going to invoke:
 
 ~~~
 mutation insertFirstPost() {
@@ -108,7 +107,7 @@ const Mutation = new GraphQLObjectType({
 
 Here in the `resolve` function, we simply add a new post to the `PostList` array and return it.
 
-Now we need to assign this to our schema. So, update our schema to be like this:
+Now we need to assign this to our schema. So, our updated schema looks like this:
 
 ~~~
 const Schema = new GraphQLSchema({
@@ -117,7 +116,7 @@ const Schema = new GraphQLSchema({
 });
 ~~~
 
-That's all. Now try to invoke following mutation:
+That's it. Now try to invoke the following mutation:
 
 ~~~
 mutation insertFirstPost {
@@ -135,8 +134,8 @@ You can check whether this post has been added or not by querying our schema.
 
 --- 
 
-Now, we've a simple task for you. 
-Try to invoke following query.
+Now we've a simple task for you. 
+Try to invoke the following query.
 
 ~~~
 mutation insertFirstPost {
@@ -149,12 +148,12 @@ mutation insertFirstPost {
 }
 ~~~
 
-What was the result?
+What result did you get?
 
   - Successfully added the post.
-  - Successfully added the post, but there is an warning mentioning content field is required.
-  - **Got an error mentioning content field is required.**
-  - Nothing happens, there is a javascript console error.
+  - Successfully added the post, but there is a warning stating that a content field is required.
+  - **Got an error stating that a content field is required.**
+  - Nothing happened, there was a JavaScript console error.
 
 *****
 
@@ -164,7 +163,7 @@ type:   text
 points: 5
 ```
 
-Once we invoked that mutation, we'll get an error mentioning content field is required. That's because we've defined our arguments as required. See:
+Once we invoke that mutation, we'll get an error stating that a content field is required. That's because we've defined our arguments as required. See:
 
 ~~~
 const Mutation = new GraphQLObjectType({
@@ -187,6 +186,6 @@ points: 5
 
 ## Finally
 
-Now we've understand how to define a mutation in our schema. As you know already, a mutation is very similar to a root query field, but it mutates your underline dataset.
+Now we understand how to define a mutation in our schema. As you know already, a mutation is very similar to a root query field, but it mutates your underlining dataset.
 
-And after the mutation, it very important to return the modified document. You can learn more about this in later lesson and while learning [Relay](https://facebook.github.io/relay/).
+And after the mutation, it is very important to return the modified document. You can learn more about this in a later lesson and while learning [Relay](https://facebook.github.io/relay/).
