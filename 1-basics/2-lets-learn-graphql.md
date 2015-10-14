@@ -19,7 +19,7 @@ We start with basics, so you don't need to know anything about GraphQL. However,
 
 > We also use Node.js only when you are learning to write your own GraphQL schemas. Even if you don't have any experience in [NodeJS](https://nodejs.org/en/), you can follow these lessons. (Make sure you have NodeJS installed on your system.)
 
-For some lessons, you may need to clone a Git repository to perform some tasks. So, we assume you've some prior experience of using Git. If not, you can learn about Git here.
+For some lessons, you may need to clone a Git repository to perform some tasks. So, we assume you've some prior experience of using Git. If not, you can learn about Git [here](https://try.github.io/levels/1/challenges/1).
 
 ## GraphQL Sandbox
 
