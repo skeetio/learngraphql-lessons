@@ -242,7 +242,7 @@ fragment postInfo on Post {
   }
 }
 
-fragment on HasAuthor {
+fragment authorInfo on HasAuthor {
   author {
     _id,
     name
