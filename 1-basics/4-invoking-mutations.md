@@ -64,7 +64,7 @@ Now you've a little task to complete. Try to add a new author, but do not includ
   - I could add the new author.
   - I could add the author, but server add `_id` as the name.
   - I got an error saying: there are a few required arguments missing.
-  - **I got an error saying: argument "createAuthor" is required.**
+  - **I got an error saying: argument "name" of field "createAuthor" is required.**
 
 *****
 
