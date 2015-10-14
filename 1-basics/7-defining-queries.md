@@ -297,7 +297,7 @@ const Post = new GraphQLObjectType({
     title: {
       type: new GraphQLNonNull(GraphQLString),
       resolve: function(post) {
-        return post.title || "Does not exists";
+        return post.title || "Does not exist";
       }
     },
     content: {type: GraphQLString}
